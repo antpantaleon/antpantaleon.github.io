@@ -15,17 +15,17 @@
     <meta property="og:title" content="Professional Piano Lessons | Expert Piano Instruction">
     <meta property="og:description" content="Professional piano lessons with experienced instructor. Learn piano with personalized instruction, all skill levels welcome.">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="images/profile-photo.jpg">
+    <meta property="og:image" content="images/profile_photo.jpg">
     <meta property="og:url" content="https://yourusername.github.io/piano-teacher-website">
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Professional Piano Lessons | Expert Piano Instruction">
     <meta name="twitter:description" content="Professional piano lessons with experienced instructor. Learn piano with personalized instruction, all skill levels welcome.">
-    <meta name="twitter:image" content="images/profile-photo.jpg">
+    <meta name="twitter:image" content="images/profile_photo.jpg">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://antpantaleon.github.io/piano-teacher-website">
+    <link rel="canonical" href="https://yourusername.github.io/piano-teacher-website">
     
     <!-- Structured Data for Search Engines -->
     <script type="application/ld+json">
@@ -40,7 +40,7 @@
             "@type": "Person",
             "name": "[Piano Teacher Name]",
             "jobTitle": "Piano Teacher",
-            "image": "images/profile-photo.jpg"
+            "image": "images/profile_photo.jpg"
         },
         "areaServed": {
             "@type": "Place",
@@ -158,23 +158,11 @@
             height: fit-content;
         }
 
-        .profile-photo {
-            width: 100%;
-            max-width: 300px;
-            height: 300px;
-            object-fit: cover;
-            border-radius: 15px;
-            margin: 0 auto 1.5rem;
-            display: block;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-            border: 4px solid #f8f9fa;
-        }
-
         /* Static profile photo from images folder */
         .profile-photo-static {
             width: 100%;
-            max-width: 300px;
-            height: 300px;
+            max-width: 400px;
+            height: 400px;
             object-fit: cover;
             border-radius: 15px;
             margin: 0 auto 1.5rem;
@@ -184,19 +172,7 @@
         }
 
         .upload-area {
-            border: 3px dashed #bdc3c7;
-            border-radius: 15px;
-            padding: 2rem;
-            text-align: center;
-            margin-bottom: 1.5rem;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            background: rgba(52, 152, 219, 0.05);
-        }
-
-        .upload-area:hover {
-            border-color: #3498db;
-            background: rgba(52, 152, 219, 0.1);
+            display: none;
         }
 
         /* CV Section */
@@ -451,55 +427,11 @@
 
     <!-- Main Content -->
     <div class="container">
-        <!-- Setup Instructions for Local Management -->
-        <div class="setup-instructions">
-            <h3>🔧 How to Customize Your Website Locally</h3>
-            <p><strong>This website is completely secure - no one can edit it online!</strong> All changes must be made locally on your computer and uploaded to GitHub.</p>
-            
-            <h4 style="margin: 1.5rem 0 1rem 0; color: #2c3e50;">📁 Required Folder Structure:</h4>
-            <div class="file-structure">
-your-piano-website/<br>
-├── index.html (this file)<br>
-├── images/<br>
-│   ├── profile-photo.jpg<br>
-│   ├── studio-1.jpg<br>
-│   ├── recital-1.jpg<br>
-│   └── student-performance.jpg<br>
-└── videos/<br>
-    ├── piano-demo.mp4<br>
-    └── student-recital.mp4
-            </div>
-
-            <h4 style="margin: 1.5rem 0 1rem 0; color: #2c3e50;">✏️ To Update Content:</h4>
-            <ol style="margin: 1rem 0; padding-left: 2rem; line-height: 1.8;">
-                <li><strong>Profile Photo:</strong> Replace <code style="background: #fff; padding: 0.2rem 0.5rem; border-radius: 4px;">images/profile-photo.jpg</code> with your photo</li>
-                <li><strong>About/CV Text:</strong> Edit the text directly in the HTML file (search for "About Me & Experience")</li>
-                <li><strong>Add Photos:</strong> Put images in the <code style="background: #fff; padding: 0.2rem 0.5rem; border-radius: 4px;">images/</code> folder and add HTML code</li>
-                <li><strong>Add Videos:</strong> Put videos in the <code style="background: #fff; padding: 0.2rem 0.5rem; border-radius: 4px;">videos/</code> folder and add HTML code</li>
-                <li><strong>Upload to GitHub:</strong> Commit and push all files to make changes live</li>
-            </ol>
-
-            <h4 style="margin: 1.5rem 0 1rem 0; color: #2c3e50;">📝 Sample Code to Add Media:</h4>
-            <div class="code-block">
-&lt;!-- Add this inside the media-grid div below --&gt;<br>
-&lt;div class="media-item"&gt;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&lt;img src="images/your-photo.jpg" alt="Piano lesson photo"&gt;<br>
-&lt;/div&gt;<br><br>
-&lt;div class="media-item"&gt;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&lt;video src="videos/your-video.mp4" controls&gt;&lt;/video&gt;<br>
-&lt;/div&gt;
-            </div>
-        </div>
-
         <div class="content-grid">
             <!-- Profile Section -->
             <div class="profile-section">
-                <!-- Replace this with your actual photo -->
-                <img src="images/profile-photo.jpg" alt="Piano Teacher Profile Photo" class="profile-photo-static">
-                <div class="upload-area">
-                    <p>📷 Profile Photo</p>
-                    <p style="font-size: 0.9rem; color: #7f8c8d;">Replace images/profile-photo.jpg with your photo</p>
-                </div>
+                <!-- Replace this with your actual photo at images/profile_photo.jpg -->
+                <img src="images/profile_photo.jpg" alt="Piano Teacher Profile Photo" class="profile-photo-static">
             </div>
 
             <!-- CV Section -->
