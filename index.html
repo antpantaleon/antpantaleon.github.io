@@ -3,7 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Piano Lessons - Professional Piano Instruction</title>
+    
+    <!-- SEO Meta Tags -->
+    <title>Professional Piano Lessons | Expert Piano Instruction | [Your Name]</title>
+    <meta name="description" content="Professional piano lessons with experienced instructor. Learn piano with personalized instruction, all skill levels welcome. Book your piano lesson today.">
+    <meta name="keywords" content="piano lessons, piano teacher, music lessons, piano instruction, learn piano, music education, piano tutor">
+    <meta name="author" content="Piano Teacher">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags for Social Media -->
+    <meta property="og:title" content="Professional Piano Lessons | Expert Piano Instruction">
+    <meta property="og:description" content="Professional piano lessons with experienced instructor. Learn piano with personalized instruction, all skill levels welcome.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/profile-photo.jpg">
+    <meta property="og:url" content="https://yourusername.github.io/piano-teacher-website">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Professional Piano Lessons | Expert Piano Instruction">
+    <meta name="twitter:description" content="Professional piano lessons with experienced instructor. Learn piano with personalized instruction, all skill levels welcome.">
+    <meta name="twitter:image" content="images/profile-photo.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://antpantaleon.github.io/piano-teacher-website">
+    
+    <!-- Structured Data for Search Engines -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "MusicGroup",
+        "name": "Professional Piano Instruction",
+        "description": "Expert piano lessons for all skill levels",
+        "url": "https://yourusername.github.io/piano-teacher-website",
+        "sameAs": [],
+        "member": {
+            "@type": "Person",
+            "name": "[Piano Teacher Name]",
+            "jobTitle": "Piano Teacher",
+            "image": "images/profile-photo.jpg"
+        },
+        "areaServed": {
+            "@type": "Place",
+            "name": "[Your City]"
+        },
+        "offers": {
+            "@type": "Offer",
+            "name": "Piano Lessons",
+            "description": "Professional piano instruction"
+        }
+    }
+    </script>
+    
     <style>
         * {
             margin: 0;
@@ -120,6 +170,19 @@
             border: 4px solid #f8f9fa;
         }
 
+        /* Static profile photo from images folder */
+        .profile-photo-static {
+            width: 100%;
+            max-width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin: 0 auto 1.5rem;
+            display: block;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            border: 4px solid #f8f9fa;
+        }
+
         .upload-area {
             border: 3px dashed #bdc3c7;
             border-radius: 15px;
@@ -128,16 +191,12 @@
             margin-bottom: 1.5rem;
             transition: all 0.3s ease;
             cursor: pointer;
+            background: rgba(52, 152, 219, 0.05);
         }
 
         .upload-area:hover {
             border-color: #3498db;
-            background: rgba(52, 152, 219, 0.05);
-        }
-
-        .upload-area.dragover {
-            border-color: #2980b9;
-            background: rgba(41, 128, 185, 0.1);
+            background: rgba(52, 152, 219, 0.1);
         }
 
         /* CV Section */
@@ -157,23 +216,26 @@
             padding-bottom: 0.5rem;
         }
 
-        #cv-text {
-            width: 100%;
-            min-height: 400px;
-            padding: 1.5rem;
-            border: 2px solid #ecf0f1;
-            border-radius: 15px;
+        .cv-content {
             font-family: Georgia, serif;
             font-size: 1rem;
-            line-height: 1.6;
-            resize: vertical;
-            transition: border-color 0.3s ease;
+            line-height: 1.8;
+            color: #2c3e50;
+            text-align: justify;
         }
 
-        #cv-text:focus {
-            outline: none;
-            border-color: #3498db;
-            box-shadow: 0 0 10px rgba(52, 152, 219, 0.3);
+        .cv-content h3 {
+            color: #34495e;
+            margin: 1.5rem 0 0.8rem 0;
+            font-size: 1.3rem;
+        }
+
+        .cv-content ul {
+            margin: 1rem 0 1rem 2rem;
+        }
+
+        .cv-content li {
+            margin-bottom: 0.5rem;
         }
 
         /* Media Gallery */
@@ -192,10 +254,6 @@
             font-size: 2rem;
             border-bottom: 3px solid #e74c3c;
             padding-bottom: 0.5rem;
-        }
-
-        .media-upload {
-            margin-bottom: 2rem;
         }
 
         .media-grid {
@@ -222,55 +280,65 @@
             object-fit: cover;
         }
 
-        .delete-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: rgba(231, 76, 60, 0.9);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background 0.3s ease;
+        /* Contact Section */
+        .contact-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            margin-bottom: 2rem;
+            text-align: center;
         }
 
-        .delete-btn:hover {
-            background: rgba(192, 57, 43, 1);
+        .contact-section h2 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            border-bottom: 3px solid #27ae60;
+            padding-bottom: 0.5rem;
+            display: inline-block;
         }
 
-        /* Buttons */
-        .btn {
-            background: linear-gradient(45deg, #3498db, #2980b9);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        .contact-info {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #2c3e50;
         }
 
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+        /* Setup Instructions */
+        .setup-instructions {
+            background: rgba(46, 204, 113, 0.1);
+            border: 2px solid #2ecc71;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
         }
 
-        .btn-secondary {
-            background: linear-gradient(45deg, #95a5a6, #7f8c8d);
-            box-shadow: 0 4px 15px rgba(149, 165, 166, 0.3);
+        .setup-instructions h3 {
+            color: #27ae60;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
         }
 
-        .btn-secondary:hover {
-            box-shadow: 0 6px 20px rgba(149, 165, 166, 0.4);
+        .file-structure {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
         }
 
-        /* Hidden inputs */
-        .hidden {
-            display: none;
+        .code-block {
+            background: #2c3e50;
+            color: #fff;
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
         }
 
         /* Musical notes decoration */
@@ -284,6 +352,15 @@
         @keyframes float {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
             50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(44, 62, 80, 0.9);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
         }
 
         /* Responsive */
@@ -304,6 +381,24 @@
             .media-grid {
                 grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             }
+        }
+
+        /* Prevent right-click and text selection for security */
+        body {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-touch-callout: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Allow text selection only for content areas */
+        .cv-content, .contact-info, .setup-instructions {
+            -webkit-user-select: text;
+            -moz-user-select: text;
+            -ms-user-select: text;
+            user-select: text;
         }
     </style>
 </head>
@@ -349,248 +444,209 @@
     <!-- Header -->
     <header>
         <div class="header-content">
-            <h1>Piano Lessons</h1>
-            <p>Professional Piano Instruction & Musical Education</p>
+            <h1>Professional Piano Lessons</h1>
+            <p>Expert Piano Instruction for All Skill Levels</p>
         </div>
     </header>
 
     <!-- Main Content -->
     <div class="container">
+        <!-- Setup Instructions for Local Management -->
+        <div class="setup-instructions">
+            <h3>🔧 How to Customize Your Website Locally</h3>
+            <p><strong>This website is completely secure - no one can edit it online!</strong> All changes must be made locally on your computer and uploaded to GitHub.</p>
+            
+            <h4 style="margin: 1.5rem 0 1rem 0; color: #2c3e50;">📁 Required Folder Structure:</h4>
+            <div class="file-structure">
+your-piano-website/<br>
+├── index.html (this file)<br>
+├── images/<br>
+│   ├── profile-photo.jpg<br>
+│   ├── studio-1.jpg<br>
+│   ├── recital-1.jpg<br>
+│   └── student-performance.jpg<br>
+└── videos/<br>
+    ├── piano-demo.mp4<br>
+    └── student-recital.mp4
+            </div>
+
+            <h4 style="margin: 1.5rem 0 1rem 0; color: #2c3e50;">✏️ To Update Content:</h4>
+            <ol style="margin: 1rem 0; padding-left: 2rem; line-height: 1.8;">
+                <li><strong>Profile Photo:</strong> Replace <code style="background: #fff; padding: 0.2rem 0.5rem; border-radius: 4px;">images/profile-photo.jpg</code> with your photo</li>
+                <li><strong>About/CV Text:</strong> Edit the text directly in the HTML file (search for "About Me & Experience")</li>
+                <li><strong>Add Photos:</strong> Put images in the <code style="background: #fff; padding: 0.2rem 0.5rem; border-radius: 4px;">images/</code> folder and add HTML code</li>
+                <li><strong>Add Videos:</strong> Put videos in the <code style="background: #fff; padding: 0.2rem 0.5rem; border-radius: 4px;">videos/</code> folder and add HTML code</li>
+                <li><strong>Upload to GitHub:</strong> Commit and push all files to make changes live</li>
+            </ol>
+
+            <h4 style="margin: 1.5rem 0 1rem 0; color: #2c3e50;">📝 Sample Code to Add Media:</h4>
+            <div class="code-block">
+&lt;!-- Add this inside the media-grid div below --&gt;<br>
+&lt;div class="media-item"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;img src="images/your-photo.jpg" alt="Piano lesson photo"&gt;<br>
+&lt;/div&gt;<br><br>
+&lt;div class="media-item"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;video src="videos/your-video.mp4" controls&gt;&lt;/video&gt;<br>
+&lt;/div&gt;
+            </div>
+        </div>
+
         <div class="content-grid">
             <!-- Profile Section -->
             <div class="profile-section">
-                <div class="upload-area" onclick="document.getElementById('photo-input').click()">
-                    <img id="profile-photo" class="profile-photo hidden" alt="Piano Teacher">
-                    <div id="upload-placeholder">
-                        <p>📸 Click to upload your photo</p>
-                        <p style="font-size: 0.9rem; color: #7f8c8d;">Drag & drop or click to select</p>
-                    </div>
+                <!-- Replace this with your actual photo -->
+                <img src="images/profile-photo.jpg" alt="Piano Teacher Profile Photo" class="profile-photo-static">
+                <div class="upload-area">
+                    <p>📷 Profile Photo</p>
+                    <p style="font-size: 0.9rem; color: #7f8c8d;">Replace images/profile-photo.jpg with your photo</p>
                 </div>
-                <input type="file" id="photo-input" class="hidden" accept="image/*">
-                <button class="btn btn-secondary" onclick="clearPhoto()" id="clear-photo-btn" style="display: none;">Remove Photo</button>
             </div>
 
             <!-- CV Section -->
             <div class="cv-section">
                 <h2>About Me & Experience</h2>
-                <textarea id="cv-text" placeholder="Share your musical journey, teaching experience, qualifications, and what makes your piano instruction special...
+                <div class="cv-content">
+                    <!-- EDIT THIS CONTENT DIRECTLY IN THE HTML FILE -->
+                    <p>Welcome to my piano studio! I am a passionate and dedicated piano instructor with over [X] years of experience teaching students of all ages and skill levels.</p>
+                    
+                    <h3>Education & Qualifications</h3>
+                    <ul>
+                        <li>[Your degree/certification - e.g., Master of Music in Piano Performance]</li>
+                        <li>[Additional certifications - e.g., Certified Piano Teacher]</li>
+                        <li>[Any specialized training - e.g., Suzuki Method Certification]</li>
+                    </ul>
 
-For example:
-• Educational background and certifications
-• Years of teaching experience
-• Musical specialties and genres
-• Teaching philosophy
-• Performance experience
-• Student achievements"></textarea>
+                    <h3>Teaching Philosophy</h3>
+                    <p>I believe that music education should be both enjoyable and challenging. My teaching approach focuses on developing proper technique while nurturing each student's musical creativity and expression. I tailor lessons to each individual's learning style and goals.</p>
+
+                    <h3>Experience</h3>
+                    <ul>
+                        <li>[Years] of private piano instruction experience</li>
+                        <li>Students have successfully participated in recitals, competitions, and examinations</li>
+                        <li>Experience with various musical genres including classical, contemporary, and jazz</li>
+                        <li>Preparation for piano exams, auditions, and competitions</li>
+                    </ul>
+
+                    <h3>Lesson Details</h3>
+                    <p>I offer lessons for beginners through advanced students. Lessons cover:</p>
+                    <ul>
+                        <li>Proper piano technique and posture</li>
+                        <li>Music theory and sight-reading</li>
+                        <li>Repertoire from various musical periods</li>
+                        <li>Performance preparation and confidence building</li>
+                    </ul>
+                    <!-- END OF EDITABLE CONTENT -->
+                </div>
             </div>
         </div>
 
         <!-- Media Gallery Section -->
         <div class="media-section">
             <h2>Photo & Video Gallery</h2>
-            <div class="media-upload">
-                <div class="upload-area" onclick="document.getElementById('media-input').click()">
-                    <p>🎵 Add Photos & Videos</p>
-                    <p style="font-size: 0.9rem; color: #7f8c8d;">Showcase your studio, performances, and student recitals</p>
+            <p style="margin-bottom: 2rem; color: #7f8c8d; font-style: italic;">Showcase of studio, performances, and student achievements</p>
+            
+            <div class="media-grid" id="media-grid">
+                <!-- ADD YOUR MEDIA ITEMS HERE -->
+                <!-- Example items - replace with your actual content -->
+                <div class="media-item">
+                    <img src="images/studio-1.jpg" alt="Piano Studio" loading="lazy">
                 </div>
-                <input type="file" id="media-input" class="hidden" accept="image/*,video/*" multiple>
-                <br><br>
-                <button class="btn" onclick="saveWebsite()">💾 Save Website</button>
-                <button class="btn btn-secondary" onclick="loadWebsite()">📂 Load Saved Data</button>
-                <input type="file" id="load-input" class="hidden" accept=".json">
+                <div class="media-item">
+                    <img src="images/recital-1.jpg" alt="Student Recital" loading="lazy">
+                </div>
+                <div class="media-item">
+                    <video src="videos/piano-demo.mp4" controls preload="metadata">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <!-- Add more media items as needed -->
             </div>
-            <div class="media-grid" id="media-grid"></div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="contact-section">
+            <h2>Get In Touch</h2>
+            <div class="contact-info">
+                <!-- EDIT CONTACT INFORMATION BELOW -->
+                <p><strong>📧 Email:</strong> your.email@example.com</p>
+                <p><strong>📱 Phone:</strong> (555) 123-4567</p>
+                <p><strong>📍 Location:</strong> Your City, State</p>
+                <p><strong>🕐 Lesson Times:</strong> Monday - Saturday, 2:00 PM - 8:00 PM</p>
+                <br>
+                <p>Contact me today to schedule your first piano lesson or to discuss your musical goals!</p>
+                <!-- END OF CONTACT INFORMATION -->
+            </div>
         </div>
     </div>
 
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Professional Piano Lessons. All rights reserved.</p>
+        <p>Website secured and optimized for search engines</p>
+    </footer>
+
     <script>
-        let mediaFiles = [];
-        let profilePhoto = null;
+        // Disable right-click context menu for security
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
 
-        // Profile photo upload
-        document.getElementById('photo-input').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    profilePhoto = e.target.result;
-                    const img = document.getElementById('profile-photo');
-                    const placeholder = document.getElementById('upload-placeholder');
-                    const clearBtn = document.getElementById('clear-photo-btn');
-                    
-                    img.src = e.target.result;
-                    img.classList.remove('hidden');
-                    placeholder.style.display = 'none';
-                    clearBtn.style.display = 'block';
-                };
-                reader.readAsDataURL(file);
+        // Disable common keyboard shortcuts for security
+        document.addEventListener('keydown', function(e) {
+            // Disable F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+            if (e.keyCode === 123 || 
+                (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) ||
+                (e.ctrlKey && e.keyCode === 85)) {
+                e.preventDefault();
             }
         });
 
-        // Clear profile photo
-        function clearPhoto() {
-            const img = document.getElementById('profile-photo');
-            const placeholder = document.getElementById('upload-placeholder');
-            const clearBtn = document.getElementById('clear-photo-btn');
+        // Basic error handling for missing images/videos
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('img');
+            const videos = document.querySelectorAll('video');
             
-            img.classList.add('hidden');
-            img.src = '';
-            placeholder.style.display = 'block';
-            clearBtn.style.display = 'none';
-            profilePhoto = null;
-        }
-
-        // Media upload
-        document.getElementById('media-input').addEventListener('change', function(e) {
-            const files = Array.from(e.target.files);
-            files.forEach(file => {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const mediaData = {
-                        id: Date.now() + Math.random(),
-                        type: file.type.startsWith('image/') ? 'image' : 'video',
-                        data: e.target.result,
-                        name: file.name
-                    };
-                    mediaFiles.push(mediaData);
-                    displayMedia();
+            images.forEach(img => {
+                img.onerror = function() {
+                    this.style.display = 'none';
+                    console.log('Image not found:', this.src);
                 };
-                reader.readAsDataURL(file);
+            });
+            
+            videos.forEach(video => {
+                video.onerror = function() {
+                    this.style.display = 'none';
+                    console.log('Video not found:', this.src);
+                };
             });
         });
 
-        // Display media files
-        function displayMedia() {
-            const grid = document.getElementById('media-grid');
-            grid.innerHTML = '';
-            
-            mediaFiles.forEach(media => {
-                const div = document.createElement('div');
-                div.className = 'media-item';
-                
-                if (media.type === 'image') {
-                    div.innerHTML = `
-                        <img src="${media.data}" alt="Gallery image">
-                        <button class="delete-btn" onclick="deleteMedia(${media.id})">×</button>
-                    `;
-                } else {
-                    div.innerHTML = `
-                        <video src="${media.data}" controls></video>
-                        <button class="delete-btn" onclick="deleteMedia(${media.id})">×</button>
-                    `;
-                }
-                
-                grid.appendChild(div);
-            });
+        // Add structured data for better SEO
+        function updateStructuredData(teacherName, city) {
+            const script = document.querySelector('script[type="application/ld+json"]');
+            const data = JSON.parse(script.textContent);
+            data.member.name = teacherName || '[Piano Teacher Name]';
+            data.areaServed.name = city || '[Your City]';
+            script.textContent = JSON.stringify(data, null, 2);
         }
 
-        // Delete media
-        function deleteMedia(id) {
-            mediaFiles = mediaFiles.filter(media => media.id !== id);
-            displayMedia();
-        }
-
-        // Drag and drop functionality
-        function setupDragDrop() {
-            const uploadAreas = document.querySelectorAll('.upload-area');
-            
-            uploadAreas.forEach(area => {
-                area.addEventListener('dragover', function(e) {
-                    e.preventDefault();
-                    this.classList.add('dragover');
-                });
-                
-                area.addEventListener('dragleave', function(e) {
-                    e.preventDefault();
-                    this.classList.remove('dragover');
-                });
-                
-                area.addEventListener('drop', function(e) {
-                    e.preventDefault();
-                    this.classList.remove('dragover');
-                    
-                    const files = Array.from(e.dataTransfer.files);
-                    
-                    if (this.onclick.toString().includes('photo-input')) {
-                        // Profile photo
-                        if (files[0] && files[0].type.startsWith('image/')) {
-                            document.getElementById('photo-input').files = e.dataTransfer.files;
-                            document.getElementById('photo-input').dispatchEvent(new Event('change'));
-                        }
-                    } else {
-                        // Media files
-                        document.getElementById('media-input').files = e.dataTransfer.files;
-                        document.getElementById('media-input').dispatchEvent(new Event('change'));
+        // Lazy loading for better performance
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.classList.remove('lazy');
+                        imageObserver.unobserve(img);
                     }
                 });
             });
+
+            document.querySelectorAll('img[data-src]').forEach(img => {
+                imageObserver.observe(img);
+            });
         }
-
-        // Save website data
-        function saveWebsite() {
-            const data = {
-                profilePhoto: profilePhoto,
-                cvText: document.getElementById('cv-text').value,
-                mediaFiles: mediaFiles
-            };
-            
-            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'piano-teacher-website-data.json';
-            a.click();
-            URL.revokeObjectURL(url);
-        }
-
-        // Load website data
-        function loadWebsite() {
-            document.getElementById('load-input').click();
-        }
-
-        document.getElementById('load-input').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    try {
-                        const data = JSON.parse(e.target.result);
-                        
-                        // Load profile photo
-                        if (data.profilePhoto) {
-                            profilePhoto = data.profilePhoto;
-                            const img = document.getElementById('profile-photo');
-                            const placeholder = document.getElementById('upload-placeholder');
-                            const clearBtn = document.getElementById('clear-photo-btn');
-                            
-                            img.src = data.profilePhoto;
-                            img.classList.remove('hidden');
-                            placeholder.style.display = 'none';
-                            clearBtn.style.display = 'block';
-                        }
-                        
-                        // Load CV text
-                        if (data.cvText) {
-                            document.getElementById('cv-text').value = data.cvText;
-                        }
-                        
-                        // Load media files
-                        if (data.mediaFiles) {
-                            mediaFiles = data.mediaFiles;
-                            displayMedia();
-                        }
-                        
-                        alert('Website data loaded successfully!');
-                    } catch (error) {
-                        alert('Error loading website data. Please check the file format.');
-                    }
-                };
-                reader.readAsText(file);
-            }
-        });
-
-        // Initialize drag and drop
-        setupDragDrop();
     </script>
 </body>
 </html>
