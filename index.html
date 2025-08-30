@@ -3,47 +3,594 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Piano Teacher CV</title>
-    <link rel="stylesheet" href="src/styles/piano-theme.css">
+    <title>Piano Lessons - Professional Piano Instruction</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #333;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Piano Keys Background */
+        .piano-background {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        .piano-keys {
+            display: flex;
+            height: 100%;
+            width: 100%;
+        }
+
+        .white-key {
+            flex: 1;
+            background: white;
+            border: 2px solid #ddd;
+            border-bottom: none;
+            position: relative;
+        }
+
+        .black-key {
+            width: 30px;
+            height: 70px;
+            background: #222;
+            position: absolute;
+            top: 0;
+            z-index: 2;
+            border-radius: 0 0 5px 5px;
+        }
+
+        .key-group {
+            position: relative;
+            flex: 1;
+            display: flex;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .header-content h1 {
+            color: #2c3e50;
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .header-content p {
+            color: #7f8c8d;
+            font-size: 1.2rem;
+            font-style: italic;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        /* Profile Section */
+        .profile-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            height: fit-content;
+        }
+
+        .profile-photo {
+            width: 100%;
+            max-width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin: 0 auto 1.5rem;
+            display: block;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            border: 4px solid #f8f9fa;
+        }
+
+        .upload-area {
+            border: 3px dashed #bdc3c7;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .upload-area:hover {
+            border-color: #3498db;
+            background: rgba(52, 152, 219, 0.05);
+        }
+
+        .upload-area.dragover {
+            border-color: #2980b9;
+            background: rgba(41, 128, 185, 0.1);
+        }
+
+        /* CV Section */
+        .cv-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .cv-section h2 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 0.5rem;
+        }
+
+        #cv-text {
+            width: 100%;
+            min-height: 400px;
+            padding: 1.5rem;
+            border: 2px solid #ecf0f1;
+            border-radius: 15px;
+            font-family: Georgia, serif;
+            font-size: 1rem;
+            line-height: 1.6;
+            resize: vertical;
+            transition: border-color 0.3s ease;
+        }
+
+        #cv-text:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 10px rgba(52, 152, 219, 0.3);
+        }
+
+        /* Media Gallery */
+        .media-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            margin-bottom: 2rem;
+        }
+
+        .media-section h2 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            border-bottom: 3px solid #e74c3c;
+            padding-bottom: 0.5rem;
+        }
+
+        .media-upload {
+            margin-bottom: 2rem;
+        }
+
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .media-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .media-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .media-item img, .media-item video {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .delete-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(231, 76, 60, 0.9);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s ease;
+        }
+
+        .delete-btn:hover {
+            background: rgba(192, 57, 43, 1);
+        }
+
+        /* Buttons */
+        .btn {
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(45deg, #95a5a6, #7f8c8d);
+            box-shadow: 0 4px 15px rgba(149, 165, 166, 0.3);
+        }
+
+        .btn-secondary:hover {
+            box-shadow: 0 6px 20px rgba(149, 165, 166, 0.4);
+        }
+
+        /* Hidden inputs */
+        .hidden {
+            display: none;
+        }
+
+        /* Musical notes decoration */
+        .musical-note {
+            position: absolute;
+            font-size: 2rem;
+            color: rgba(255, 255, 255, 0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .header-content h1 {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .media-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Piano Keys Background -->
+    <div class="piano-background">
+        <div class="piano-keys">
+            <div class="key-group">
+                <div class="white-key"></div>
+                <div class="black-key" style="left: 70%;"></div>
+            </div>
+            <div class="key-group">
+                <div class="white-key"></div>
+                <div class="black-key" style="left: 30%;"></div>
+            </div>
+            <div class="key-group">
+                <div class="white-key"></div>
+            </div>
+            <div class="key-group">
+                <div class="white-key"></div>
+                <div class="black-key" style="left: 70%;"></div>
+            </div>
+            <div class="key-group">
+                <div class="white-key"></div>
+                <div class="black-key" style="left: 50%;"></div>
+            </div>
+            <div class="key-group">
+                <div class="white-key"></div>
+                <div class="black-key" style="left: 30%;"></div>
+            </div>
+            <div class="key-group">
+                <div class="white-key"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Musical Notes -->
+    <div class="musical-note" style="top: 20%; left: 10%;">♪</div>
+    <div class="musical-note" style="top: 40%; right: 15%; animation-delay: 2s;">♫</div>
+    <div class="musical-note" style="top: 60%; left: 20%; animation-delay: 4s;">♪</div>
+    <div class="musical-note" style="top: 30%; right: 30%; animation-delay: 3s;">♩</div>
+
+    <!-- Header -->
     <header>
-        <h1>John Doe</h1>
-        <h2>Piano Teacher</h2>
-        <img src="src/assets/piano.svg" alt="Piano" class="piano-image">
+        <div class="header-content">
+            <h1>Piano Lessons</h1>
+            <p>Professional Piano Instruction & Musical Education</p>
+        </div>
     </header>
-    <section id="personal-info">
-        <h3>Personal Information</h3>
-        <p>Email: johndoe@example.com</p>
-        <p>Phone: (123) 456-7890</p>
-        <p>Location: City, Country</p>
-    </section>
-    <section id="teaching-experience">
-        <h3>Teaching Experience</h3>
-        <ul>
-            <li>Private Piano Instructor - 2015 to Present</li>
-            <li>Music School - Piano Teacher - 2012 to 2015</li>
-        </ul>
-    </section>
-    <section id="education">
-        <h3>Education</h3>
-        <ul>
-            <li>Bachelor of Music - University Name - Year</li>
-            <li>Certification in Piano Teaching - Institution Name - Year</li>
-        </ul>
-    </section>
-    <section id="skills">
-        <h3>Skills</h3>
-        <ul>
-            <li>Classical Piano</li>
-            <li>Music Theory</li>
-            <li>Composition</li>
-            <li>Student Engagement</li>
-        </ul>
-    </section>
-    <footer>
-        <p>&copy; 2023 John Doe. All rights reserved.</p>
-    </footer>
-    <script src="src/scripts/main.js"></script>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="content-grid">
+            <!-- Profile Section -->
+            <div class="profile-section">
+                <div class="upload-area" onclick="document.getElementById('photo-input').click()">
+                    <img id="profile-photo" class="profile-photo hidden" alt="Piano Teacher">
+                    <div id="upload-placeholder">
+                        <p>📸 Click to upload your photo</p>
+                        <p style="font-size: 0.9rem; color: #7f8c8d;">Drag & drop or click to select</p>
+                    </div>
+                </div>
+                <input type="file" id="photo-input" class="hidden" accept="image/*">
+                <button class="btn btn-secondary" onclick="clearPhoto()" id="clear-photo-btn" style="display: none;">Remove Photo</button>
+            </div>
+
+            <!-- CV Section -->
+            <div class="cv-section">
+                <h2>About Me & Experience</h2>
+                <textarea id="cv-text" placeholder="Share your musical journey, teaching experience, qualifications, and what makes your piano instruction special...
+
+For example:
+• Educational background and certifications
+• Years of teaching experience
+• Musical specialties and genres
+• Teaching philosophy
+• Performance experience
+• Student achievements"></textarea>
+            </div>
+        </div>
+
+        <!-- Media Gallery Section -->
+        <div class="media-section">
+            <h2>Photo & Video Gallery</h2>
+            <div class="media-upload">
+                <div class="upload-area" onclick="document.getElementById('media-input').click()">
+                    <p>🎵 Add Photos & Videos</p>
+                    <p style="font-size: 0.9rem; color: #7f8c8d;">Showcase your studio, performances, and student recitals</p>
+                </div>
+                <input type="file" id="media-input" class="hidden" accept="image/*,video/*" multiple>
+                <br><br>
+                <button class="btn" onclick="saveWebsite()">💾 Save Website</button>
+                <button class="btn btn-secondary" onclick="loadWebsite()">📂 Load Saved Data</button>
+                <input type="file" id="load-input" class="hidden" accept=".json">
+            </div>
+            <div class="media-grid" id="media-grid"></div>
+        </div>
+    </div>
+
+    <script>
+        let mediaFiles = [];
+        let profilePhoto = null;
+
+        // Profile photo upload
+        document.getElementById('photo-input').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    profilePhoto = e.target.result;
+                    const img = document.getElementById('profile-photo');
+                    const placeholder = document.getElementById('upload-placeholder');
+                    const clearBtn = document.getElementById('clear-photo-btn');
+                    
+                    img.src = e.target.result;
+                    img.classList.remove('hidden');
+                    placeholder.style.display = 'none';
+                    clearBtn.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Clear profile photo
+        function clearPhoto() {
+            const img = document.getElementById('profile-photo');
+            const placeholder = document.getElementById('upload-placeholder');
+            const clearBtn = document.getElementById('clear-photo-btn');
+            
+            img.classList.add('hidden');
+            img.src = '';
+            placeholder.style.display = 'block';
+            clearBtn.style.display = 'none';
+            profilePhoto = null;
+        }
+
+        // Media upload
+        document.getElementById('media-input').addEventListener('change', function(e) {
+            const files = Array.from(e.target.files);
+            files.forEach(file => {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const mediaData = {
+                        id: Date.now() + Math.random(),
+                        type: file.type.startsWith('image/') ? 'image' : 'video',
+                        data: e.target.result,
+                        name: file.name
+                    };
+                    mediaFiles.push(mediaData);
+                    displayMedia();
+                };
+                reader.readAsDataURL(file);
+            });
+        });
+
+        // Display media files
+        function displayMedia() {
+            const grid = document.getElementById('media-grid');
+            grid.innerHTML = '';
+            
+            mediaFiles.forEach(media => {
+                const div = document.createElement('div');
+                div.className = 'media-item';
+                
+                if (media.type === 'image') {
+                    div.innerHTML = `
+                        <img src="${media.data}" alt="Gallery image">
+                        <button class="delete-btn" onclick="deleteMedia(${media.id})">×</button>
+                    `;
+                } else {
+                    div.innerHTML = `
+                        <video src="${media.data}" controls></video>
+                        <button class="delete-btn" onclick="deleteMedia(${media.id})">×</button>
+                    `;
+                }
+                
+                grid.appendChild(div);
+            });
+        }
+
+        // Delete media
+        function deleteMedia(id) {
+            mediaFiles = mediaFiles.filter(media => media.id !== id);
+            displayMedia();
+        }
+
+        // Drag and drop functionality
+        function setupDragDrop() {
+            const uploadAreas = document.querySelectorAll('.upload-area');
+            
+            uploadAreas.forEach(area => {
+                area.addEventListener('dragover', function(e) {
+                    e.preventDefault();
+                    this.classList.add('dragover');
+                });
+                
+                area.addEventListener('dragleave', function(e) {
+                    e.preventDefault();
+                    this.classList.remove('dragover');
+                });
+                
+                area.addEventListener('drop', function(e) {
+                    e.preventDefault();
+                    this.classList.remove('dragover');
+                    
+                    const files = Array.from(e.dataTransfer.files);
+                    
+                    if (this.onclick.toString().includes('photo-input')) {
+                        // Profile photo
+                        if (files[0] && files[0].type.startsWith('image/')) {
+                            document.getElementById('photo-input').files = e.dataTransfer.files;
+                            document.getElementById('photo-input').dispatchEvent(new Event('change'));
+                        }
+                    } else {
+                        // Media files
+                        document.getElementById('media-input').files = e.dataTransfer.files;
+                        document.getElementById('media-input').dispatchEvent(new Event('change'));
+                    }
+                });
+            });
+        }
+
+        // Save website data
+        function saveWebsite() {
+            const data = {
+                profilePhoto: profilePhoto,
+                cvText: document.getElementById('cv-text').value,
+                mediaFiles: mediaFiles
+            };
+            
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'piano-teacher-website-data.json';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        // Load website data
+        function loadWebsite() {
+            document.getElementById('load-input').click();
+        }
+
+        document.getElementById('load-input').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    try {
+                        const data = JSON.parse(e.target.result);
+                        
+                        // Load profile photo
+                        if (data.profilePhoto) {
+                            profilePhoto = data.profilePhoto;
+                            const img = document.getElementById('profile-photo');
+                            const placeholder = document.getElementById('upload-placeholder');
+                            const clearBtn = document.getElementById('clear-photo-btn');
+                            
+                            img.src = data.profilePhoto;
+                            img.classList.remove('hidden');
+                            placeholder.style.display = 'none';
+                            clearBtn.style.display = 'block';
+                        }
+                        
+                        // Load CV text
+                        if (data.cvText) {
+                            document.getElementById('cv-text').value = data.cvText;
+                        }
+                        
+                        // Load media files
+                        if (data.mediaFiles) {
+                            mediaFiles = data.mediaFiles;
+                            displayMedia();
+                        }
+                        
+                        alert('Website data loaded successfully!');
+                    } catch (error) {
+                        alert('Error loading website data. Please check the file format.');
+                    }
+                };
+                reader.readAsText(file);
+            }
+        });
+
+        // Initialize drag and drop
+        setupDragDrop();
+    </script>
 </body>
 </html>
